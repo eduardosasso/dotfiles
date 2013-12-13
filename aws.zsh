@@ -15,7 +15,7 @@ function gbotserverip {
 # ssh into a server using its name ex: gbot-ssh gprod_be1
   # to see a list of all the running servers run gbot-servers
 function gbotssh {  
-  server="$(gbot-server-name $1 | awk '/INSTANCE/ { print $4,$7 }')"
+  server="$(ec2-describe-instances -Ftag:Name=$1 | awk '/INSTANCE/ { print $4,$7 }')"
   dns=$(echo $server | awk '{print $1}')
   key=$(echo $server | awk '{print $2}')
 
