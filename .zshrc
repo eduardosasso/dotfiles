@@ -59,6 +59,7 @@ alias vim='nvim'
 alias gdiff='git diff'
 alias gcm='git commit -v -a -m'
 alias gdisc='git checkout -- .'
+eval "$(hub alias -s)"
 
 alias trip='cd /Users/eduardosasso/Dropbox/gogobot/trip-rails-app'
 alias gbot='cd /Users/eduardosasso/Dropbox/gogobot'
@@ -77,5 +78,14 @@ prompt pure
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+setopt EXTENDED_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_BEEP
 
 [ -f ~/Dropbox/dotfiles/.fzf.zsh ] && source ~/Dropbox/dotfiles/.fzf.zsh

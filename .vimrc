@@ -25,7 +25,7 @@ filetype plugin indent on
 
 set autoindent          " copy indent from current line when starting a new line
 set smartindent         " even better autoindent (e.g. add indent after '{')
-
+" set autochdir           " change to dir in current file useful for creating new files under same folder
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 
@@ -62,6 +62,7 @@ Plug 'mhartington/oceanic-next'
 Plug 'hzchirs/vim-material'
 Plug 'joshdick/onedark.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'tpope/vim-rails'
 " Plug 'ryanoasis/vim-devicons'
 " Plug 'tpope/vim-sensible'
 " Plug 'rakr/vim-one'
@@ -75,6 +76,7 @@ set background=dark
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
+set guitablabel=%t
 
 " let g:material_theme_style = 'dark'
 " let g:airline_theme = 'material'
@@ -88,6 +90,13 @@ if (has("autocmd") && !has("gui_running"))
 endif
 colorscheme onedark
 let g:airline_theme='onedark'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_splits = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#show_close_button = 0
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#show_tab_nr = 0
 " let g:airline_theme='one'
 
 let g:airline_powerline_fonts = 1
@@ -101,6 +110,12 @@ let g:airline#extensions#ale#enabled = 1
 
 let g:airline_skip_empty_sections = 1
 let g:ale_set_highlights = 0
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '.'
+" let g:ale_lint_on_text_changed = 'never'
+" You can disable this option too
+" " if you don't want linters to run on opening a file
+" let g:ale_lint_on_enter = 0
 " let g:airline_solarized_bg='dark'
 " command! -bang -nargs=* Rg
 "   \ call fzf#vim#grep(
