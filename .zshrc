@@ -61,9 +61,9 @@ alias gcm='git commit -v -a -m'
 alias gdisc='git checkout -- .'
 eval "$(hub alias -s)"
 
-alias trip='cd /Users/eduardosasso/Dropbox/gogobot/trip-rails-app'
-alias gbot='cd /Users/eduardosasso/Dropbox/gogobot'
-alias leter='cd /Users/eduardosasso/dropbox/leter'
+# alias trip='cd /Users/eduardosasso/Dropbox/gogobot/trip-rails-app'
+# alias gbot='cd /Users/eduardosasso/Dropbox/gogobot'
+# alias leter='cd /Users/eduardosasso/dropbox/leter'
 
 # top 20 most recent branches
 alias gbr="git for-each-ref --count=20 --sort=-committerdate refs/heads/ --format='%(refname)' | sed 's/refs\/heads\///g'"
@@ -78,6 +78,15 @@ prompt pure
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+# export FZF_DEFAULT_OPTS='--prompt=❯\ '
+export FZF_DEFAULT_OPTS='
+  --prompt=❯\
+  --color=spinner:#2b2b2b,bg+:#2b2b2b,hl+:#82aafe,hl:#82aafe,info:#5c5c5c
+  --color=pointer:#2b2b2b
+  --color=marker:#2b2b2b,prompt:#5c5c5c
+'
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 setopt EXTENDED_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST

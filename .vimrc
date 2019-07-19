@@ -1,5 +1,6 @@
 set nocompatible        " disable compatibility mode with vi
-set number              " show line numbers
+set number relativenumber
+"set number              " show line numbers
 set wrap                " wrap lines
 set encoding=utf-8      " set encoding to UTF-8 (default was "latin1")
 set mouse=a             " enable mouse support (might not work well on Mac OS X)
@@ -22,6 +23,7 @@ syntax enable
 filetype plugin indent on
 " set guioptions=
 " set guifont=Hack:h14
+set guifont=DroidSansMono\ Nerd\ Font:h11
 
 set autoindent          " copy indent from current line when starting a new line
 set smartindent         " even better autoindent (e.g. add indent after '{')
@@ -45,6 +47,8 @@ call plug#begin('~/.vim/plugged')
 " A
 " de /Users/eduardosasso/Dropbox/prompts/example.js
 "
+" Plug 'unblevable/quick-scope'
+" Plug 'kassio/neoterm'
 Plug 'kaicataldo/material.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -58,12 +62,14 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
 Plug 'w0rp/ale'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'mhartington/oceanic-next'
+" Plug 'mhartington/oceanic-next'
 Plug 'hzchirs/vim-material'
 Plug 'joshdick/onedark.vim'
-Plug 'dracula/vim', { 'as': 'dracula' }
+" Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'tpope/vim-rails'
-" Plug 'ryanoasis/vim-devicons'
+Plug 'tpope/vim-rhubarb'
+Plug 'ryanoasis/vim-devicons'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'tpope/vim-sensible'
 " Plug 'rakr/vim-one'
 "Plug 'hzchirs/vim-material'
@@ -76,7 +82,7 @@ set background=dark
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
-set guitablabel=%t
+" set guitablabel=%N:%M%t
 
 " let g:material_theme_style = 'dark'
 " let g:airline_theme = 'material'
@@ -96,15 +102,19 @@ let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_tabs = 1
 let g:airline#extensions#tabline#show_close_button = 0
 let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#show_tab_nr = 0
+let g:airline#extensions#tabline#tab_nr_type = 1
+" let g:airline#extensions#tabline#show_tab_nr = 0
 " let g:airline_theme='one'
-
 let g:airline_powerline_fonts = 1
-
+let g:ale_virtualenv_dir_names = []
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_save = 1
 " Map movement through errors without wrapping.
 nmap <silent> <C-k> <Plug>(ale_previous)
 nmap <silent> <C-j> <Plug>(ale_next)
- 
+nnoremap <C-H> :vert help
+
 " Set this. Airline will handle the rest.
 let g:airline#extensions#ale#enabled = 1
 
@@ -112,6 +122,7 @@ let g:airline_skip_empty_sections = 1
 let g:ale_set_highlights = 0
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '.'
+
 " let g:ale_lint_on_text_changed = 'never'
 " You can disable this option too
 " " if you don't want linters to run on opening a file
@@ -126,6 +137,9 @@ let g:ale_sign_warning = '.'
 
 "Remove all trailing whitespace by pressing F5
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+autocmd! FileType fzf
+autocmd  FileType fzf set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
 "send to clipboard when yank cut
 set clipboard+=unnamedplus
