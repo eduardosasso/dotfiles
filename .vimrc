@@ -36,6 +36,13 @@ set ignorecase
 set smartcase
 " turn off search highlighting with <CR> (carriage-return)
 nnoremap <CR> :nohlsearch<CR><CR>
+nnoremap <Tab> <Esc>
+vnoremap <Tab> <Esc>gV
+onoremap <Tab> <Esc>
+cnoremap <Tab> <C-C><Esc>
+inoremap <Tab> <Esc>`^
+inoremap <Leader><Tab> <Tab>
+" nnoremap <C-W> :update<cr>
 
 let mapleader = ','
 set rtp+=/usr/local/opt/fzf
@@ -70,6 +77,10 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rhubarb'
 Plug 'ryanoasis/vim-devicons'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'junegunn/goyo.vim'
+Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+Plug 'janko/vim-test'
+Plug 'jiangmiao/auto-pairs'
 " Plug 'tpope/vim-sensible'
 " Plug 'rakr/vim-one'
 "Plug 'hzchirs/vim-material'
@@ -145,6 +156,13 @@ autocmd  FileType fzf set laststatus=0 noshowmode noruler
 set clipboard+=unnamedplus
 nnoremap <c-p> :FZF <cr>
 nnoremap <c-s> :Rg <cr>
+
+nmap <silent> t<c-n> :TestNearest<CR>
+nmap <silent> t<c-f> :TestFile<CR>
+nmap <silent> t<c-s> :TestSuite<CR>
+nmap <silent> t<c-l> :TestLast<CR>
+nmap <silent> t<c-g> :TestVisit<CR>
+
 " --column: Show column number
 " --line-number: Show line number
 " --no-heading: Do not show file headings in results
@@ -156,3 +174,12 @@ nnoremap <c-s> :Rg <cr>
 " --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 " --color: Search color options
 " "command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+"
+"
+" Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" OR this mapping also breaks it in same manor
+" Make <cr> select the first completion item and confirm completion when no item have selected
+" inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
