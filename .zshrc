@@ -46,6 +46,7 @@ export EC2_URL="https://ec2.us-west-2.amazonaws.com"
 export EVENT_NOKQUEUE=1
 
 export GOROOT=/usr/local/go
+export TERM=vt100
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/mysql/bin:./node_modules/.bin:~/.ec2/bin:/Users/eduardosasso/Dropbox/android-sdk-macosx:/Users/eduardosasso/Dropbox/android-sdk-macosx/platforms:/Users/eduardosasso/Dropbox/android-sdk-macosx/tools:$GEM_HOME/bin:$PATH:$GOROOT/bin
 
