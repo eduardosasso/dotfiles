@@ -73,14 +73,15 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'hzchirs/vim-material'
 Plug 'joshdick/onedark.vim'
 " Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'tpope/vim-rails'
+" Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rhubarb'
 Plug 'ryanoasis/vim-devicons'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'junegunn/goyo.vim'
+" Plug 'junegunn/goyo.vim'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'janko/vim-test'
 Plug 'jiangmiao/auto-pairs'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 " Plug 'tpope/vim-sensible'
 " Plug 'rakr/vim-one'
 "Plug 'hzchirs/vim-material'
@@ -131,8 +132,11 @@ let g:airline#extensions#ale#enabled = 1
 
 let g:airline_skip_empty_sections = 1
 let g:ale_set_highlights = 0
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '.'
+let g:ale_sign_error = '•'
+let g:ale_sign_warning = '•'
+
+let g:AutoPairsShortcutFastWrap = '<c-e>'
+let g:AutoPairsShortcutJump = '<c-n>'
 
 " let g:ale_lint_on_text_changed = 'never'
 " You can disable this option too
