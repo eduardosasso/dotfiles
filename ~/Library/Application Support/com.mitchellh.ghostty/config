@@ -1,4 +1,4 @@
-font-family = "Fira Code"
+font-family = "FiraCode Nerd Font Mono"
 font-size = 14
 # theme = "MaterialOcean"
 # theme = "tokyonight_night"
@@ -6,6 +6,7 @@ theme = "NvimDark"
 shell-integration-features = no-cursor
 cursor-style = block
 cursor-style-blink = false
+keybind = cmd+enter=unbind
 # cursor-blink = true
 
 
