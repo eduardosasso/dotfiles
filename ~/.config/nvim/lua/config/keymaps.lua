@@ -82,6 +82,7 @@ map("n", "<leader>fh", ":Telescope help_tags<CR>", { desc = "Help tags" })
 map("n", "<leader>fc", ":Telescope commands<CR>", { desc = "Commands" })
 map("n", "<leader>fk", ":Telescope keymaps<CR>", { desc = "Keymaps" })
 map("n", "<leader>fr", ":Telescope oldfiles<CR>", { desc = "Recent files" })
+map("n", "<D-O>", ":Telescope treesitter<CR>", { desc = "Treesitter symbols (Cmd+Shift+O)" })
 
 -- macOS open URL
 map("n", "gx", function()

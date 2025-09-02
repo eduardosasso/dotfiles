@@ -110,6 +110,7 @@
 | `<leader>fc` | Normal | `:Telescope commands<CR>` | Search commands |
 | `<leader>fk` | Normal | `:Telescope keymaps<CR>` | Search keymaps |
 | `<leader>fr` | Normal | `:Telescope oldfiles<CR>` | Recent files |
+| `<Cmd-Shift-O>` | Normal | `:Telescope treesitter<CR>` | Search document symbols (Treesitter) |
 
 ### Telescope Internal Mappings (Within Telescope)
 | Shortcut | Mode | Action | Description |
