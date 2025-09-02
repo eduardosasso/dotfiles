@@ -26,9 +26,18 @@ return {
         borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
         color_devicons = true,
         case_insensitive = true,
+        -- Include hidden files in live_grep and avoid .git dir
         vimgrep_arguments = {
-          "rg", "--color=never", "--no-heading", "--with-filename",
-          "--line-number", "--column", "--smart-case",
+          "rg",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+          "--smart-case",
+          "--hidden",
+          "--glob",
+          "!**/.git/*",
         },
         mappings = {
           i = {
@@ -46,7 +55,16 @@ return {
         },
       },
       pickers = {
-        find_files = { theme = "dropdown", previewer = false },
+        -- Show hidden files and ignore .git in find_files
+        find_files = {
+          theme = "dropdown",
+          previewer = false,
+          hidden = true,
+          no_ignore = true,
+          follow = true,
+          -- Use ripgrep for portability (no fd dependency)
+          find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+        },
         buffers = { theme = "dropdown", previewer = false },
       },
     })
