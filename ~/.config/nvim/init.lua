@@ -21,7 +21,17 @@ require("config.autocmds")   -- Auto commands
 require("config.tabline")    -- Custom tabline
 
 -- Setup plugins
-require("lazy").setup("plugins")
+require("lazy").setup("plugins", {
+  checker = {
+    enabled = true,        -- Enable update checker
+    notify = true,         -- Show notification when updates available
+    frequency = 3600,      -- Check every hour (3600 seconds)
+  },
+  change_detection = {
+    enabled = true,        -- Enable change detection
+    notify = true,         -- Show notification when config changes
+  },
+})
 
 -- =============================================================================
 -- Configuration complete - Modern, modular, maintainable

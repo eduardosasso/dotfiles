@@ -47,51 +47,104 @@ return {
         },
       })
 
-      local lspconfig = require("lspconfig")
-      local util = require("lspconfig.util")
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-      local servers = {
-        lua_ls = {
-          settings = {
-            Lua = {
-              completion = { callSnippet = "Replace" },
-              telemetry = { enable = false },
-              diagnostics = { disable = { "trailing-space" } },
-            },
+      -- Modern vim.lsp.config approach (Neovim 0.11+)
+      vim.lsp.config.lua_ls = {
+        cmd = { vim.fn.exepath("lua-language-server") },
+        filetypes = { "lua" },
+        capabilities = capabilities,
+        settings = {
+          Lua = {
+            completion = { callSnippet = "Replace" },
+            telemetry = { enable = false },
+            diagnostics = { disable = { "trailing-space" } },
           },
-        },
-        ts_ls = {},
-        pyright = {},
-        rust_analyzer = {},
-        gopls = {},
-        html = {},
-        cssls = {},
-        jsonls = {},
-        biome = {
-          cmd = { "biome", "lsp-proxy" },
-          filetypes = {
-            "javascript", "javascriptreact", "javascript.jsx",
-            "typescript", "typescriptreact", "typescript.tsx",
-            "json", "jsonc"
-          },
-          root_dir = util.root_pattern("biome.json", "biome.jsonc", "package.json", ".git"),
-        },
-        solargraph = {
-          settings = {
-            solargraph = {
-              diagnostics = true,
-              completion = true,
-            }
-          }
         },
       }
 
-      for server, config in pairs(servers) do
-        config.capabilities = capabilities
-        lspconfig[server].setup(config)
-      end
+      vim.lsp.config.ts_ls = {
+        cmd = { vim.fn.exepath("typescript-language-server"), "--stdio" },
+        filetypes = { "javascript", "typescript", "typescriptreact", "javascriptreact" },
+        capabilities = capabilities,
+      }
+
+      vim.lsp.config.pyright = {
+        cmd = { vim.fn.exepath("pyright-langserver"), "--stdio" },
+        filetypes = { "python" },
+        capabilities = capabilities,
+      }
+
+      vim.lsp.config.rust_analyzer = {
+        cmd = { vim.fn.exepath("rust-analyzer") },
+        filetypes = { "rust" },
+        capabilities = capabilities,
+      }
+
+      vim.lsp.config.gopls = {
+        cmd = { vim.fn.exepath("gopls") },
+        filetypes = { "go", "gomod", "gowork", "gotmpl" },
+        capabilities = capabilities,
+      }
+
+      vim.lsp.config.html = {
+        cmd = { vim.fn.exepath("vscode-html-language-server"), "--stdio" },
+        filetypes = { "html" },
+        capabilities = capabilities,
+      }
+
+      vim.lsp.config.cssls = {
+        cmd = { vim.fn.exepath("vscode-css-language-server"), "--stdio" },
+        filetypes = { "css", "scss", "less" },
+        capabilities = capabilities,
+      }
+
+      vim.lsp.config.jsonls = {
+        cmd = { vim.fn.exepath("vscode-json-language-server"), "--stdio" },
+        filetypes = { "json", "jsonc" },
+        capabilities = capabilities,
+      }
+
+      vim.lsp.config.biome = {
+        cmd = { vim.fn.exepath("biome"), "lsp-proxy" },
+        filetypes = {
+          "javascript", "javascriptreact", "javascript.jsx",
+          "typescript", "typescriptreact", "typescript.tsx",
+          "json", "jsonc"
+        },
+        capabilities = capabilities,
+        root_dir = function(fname)
+          return vim.fs.find({"biome.json", "biome.jsonc", "package.json", ".git"}, {
+            path = fname,
+            upward = true,
+          })[1]
+        end,
+      }
+
+      vim.lsp.config.solargraph = {
+        cmd = { vim.fn.exepath("solargraph"), "stdio" },
+        filetypes = { "ruby" },
+        capabilities = capabilities,
+        settings = {
+          solargraph = {
+            diagnostics = true,
+            completion = true,
+          }
+        }
+      }
+
+      -- Enable the language servers
+      vim.lsp.enable("lua_ls")
+      vim.lsp.enable("ts_ls")
+      vim.lsp.enable("pyright")
+      vim.lsp.enable("rust_analyzer")
+      vim.lsp.enable("gopls")
+      vim.lsp.enable("html")
+      vim.lsp.enable("cssls")
+      vim.lsp.enable("jsonls")
+      vim.lsp.enable("biome")
+      vim.lsp.enable("solargraph")
     end,
   },
 }

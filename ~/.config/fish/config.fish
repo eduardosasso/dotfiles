@@ -1,5 +1,7 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
+    # Ctrl+K to clear screen (like macOS Cmd+K)
+    bind \ck 'clear; commandline -f repaint'
 end
 
 alias l='eza --long --group-directories-first --colour-scale=all --hyperlink -a --color=always'

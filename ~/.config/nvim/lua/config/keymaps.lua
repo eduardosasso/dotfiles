@@ -73,9 +73,17 @@ map("n", "<leader>f", function() vim.lsp.buf.format({ async = true }) end, { des
 
 -- Telescope
 map("n", "<leader>ff", ":Telescope find_files<CR>", { desc = "Find files" })
-map("n", "<D-p>", ":Telescope find_files<CR>", { desc = "Find files (VS Code style)" })
+map("n", "<leader>p", ":Telescope find_files<CR>", { desc = "Find files (Space+P)" })
+-- Cross-platform find files (Cmd+P on Mac only)
+if vim.fn.has("mac") == 1 then
+  map("n", "<D-p>", ":Telescope find_files<CR>", { desc = "Find files (Cmd+P)" })
+end
 map("n", "<leader>fg", ":Telescope live_grep<CR>", { desc = "Live grep" })
-map("n", "<D-f>", ":Telescope live_grep<CR>", { desc = "Live grep (VS Code style)" })
+map("n", "<leader>r", ":Telescope live_grep<CR>", { desc = "Live grep (Space+R)" })
+-- Cross-platform live grep (Cmd+F on Mac only)
+if vim.fn.has("mac") == 1 then
+  map("n", "<D-f>", ":Telescope live_grep<CR>", { desc = "Live grep (Cmd+F)" })
+end
 map("n", "<C-r>", ":Telescope live_grep<CR>", { desc = "Live grep (Ctrl+R)" })
 map("n", "<leader>fb", ":Telescope buffers<CR>", { desc = "Find buffers" })
 map("n", "<leader>fh", ":Telescope help_tags<CR>", { desc = "Help tags" })
