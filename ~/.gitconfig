@@ -1,6 +1,7 @@
 [user]
 	name = blakbelt78
 	email = blakbelt78@icloud.com
+	signingkey = /home/blakbelt78/.ssh/id_ed25519_blakbelt78.pub
 [core]
 	pager = delta
 [interactive]
@@ -23,3 +24,11 @@
 	zero-style = normal
 	line-numbers-zero-style = 
 	file-modified-label = 
+[init]
+	defaultBranch = main
+[fetch]
+	prune = true
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true

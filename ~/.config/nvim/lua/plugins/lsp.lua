@@ -115,8 +115,9 @@ return {
         },
         capabilities = capabilities,
         root_dir = function(fname)
+          local path = type(fname) == "string" and fname or vim.api.nvim_buf_get_name(fname)
           return vim.fs.find({"biome.json", "biome.jsonc", "package.json", ".git"}, {
-            path = fname,
+            path = path,
             upward = true,
           })[1]
         end,
