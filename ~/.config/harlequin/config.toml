@@ -1,0 +1,177 @@
+# Harlequin Configuration with Vim-style Keybindings
+# Location: ~/.config/harlequin/config.toml
+
+default_profile = "default"
+
+[profiles.default]
+# Use both the default vscode keymap and custom vim-style keymap
+keymap_name = ["vscode", "vim_style"]
+limit = 100_000
+
+# ==============================================================================
+# Vim-Style Keymap
+# ==============================================================================
+# Note: Harlequin doesn't support multi-key vim motions (like 'dw' or 'cw')
+# These are single-key mappings inspired by vim navigation patterns
+
+# ------------------------------------------------------------------------------
+# Pane Navigation (similar to vim window navigation)
+# ------------------------------------------------------------------------------
+
+# Ctrl+h - Focus Data Catalog (left pane, like <C-w>h in vim)
+[[keymaps.vim_style]]
+keys = "ctrl+h"
+action = "focus_data_catalog"
+key_display = "^h"
+
+# Ctrl+l - Focus Query Editor (center/main pane, like <C-w>l in vim)
+[[keymaps.vim_style]]
+keys = "ctrl+l"
+action = "focus_query_editor"
+key_display = "^l"
+
+# Ctrl+j - Focus Results Viewer (bottom pane, like <C-w>j in vim)
+[[keymaps.vim_style]]
+keys = "ctrl+j"
+action = "focus_results_viewer"
+key_display = "^j"
+
+# Ctrl+k - Focus Query Editor (up from results, like <C-w>k in vim)
+[[keymaps.vim_style]]
+keys = "ctrl+k"
+action = "focus_query_editor"
+key_display = "^k"
+
+# Tab - Cycle focus forward through panes
+[[keymaps.vim_style]]
+keys = "tab"
+action = "focus_next"
+key_display = "Tab"
+
+# Shift+Tab - Cycle focus backward through panes
+[[keymaps.vim_style]]
+keys = "shift+tab"
+action = "focus_previous"
+key_display = "S-Tab"
+
+# ------------------------------------------------------------------------------
+# Query Execution (vim command-like)
+# ------------------------------------------------------------------------------
+
+# Space - Run query (similar to space as leader key in vim)
+[[keymaps.vim_style]]
+keys = "space"
+action = "run_query"
+key_display = "SPC"
+
+# Ctrl+c - Cancel query (like vim's cancel/interrupt)
+[[keymaps.vim_style]]
+keys = "ctrl+c"
+action = "cancel_query"
+key_display = "^c"
+
+# ------------------------------------------------------------------------------
+# Buffer Management (vim-style)
+# ------------------------------------------------------------------------------
+
+# Ctrl+n - New buffer (like :new in vim)
+[[keymaps.vim_style]]
+keys = "ctrl+n"
+action = "code_editor.new_buffer"
+key_display = "^n"
+
+# Ctrl+w - Close buffer (like :q or :bd in vim)
+[[keymaps.vim_style]]
+keys = "ctrl+w"
+action = "code_editor.close_buffer"
+key_display = "^w"
+
+# g,t - Next buffer (like :bn or gt for next tab in vim)
+[[keymaps.vim_style]]
+keys = "g,t"
+action = "code_editor.next_buffer"
+key_display = "gt"
+
+# ------------------------------------------------------------------------------
+# File Operations (vim-style)
+# ------------------------------------------------------------------------------
+
+# Ctrl+s - Save buffer (like :w in vim)
+[[keymaps.vim_style]]
+keys = "ctrl+s"
+action = "code_editor.save_buffer"
+key_display = "^s"
+
+# Ctrl+o - Open/Load file (like :e in vim)
+[[keymaps.vim_style]]
+keys = "ctrl+o"
+action = "code_editor.load_buffer"
+key_display = "^o"
+
+# ------------------------------------------------------------------------------
+# Code Formatting
+# ------------------------------------------------------------------------------
+
+# g,q - Format buffer (like gq for format in vim)
+[[keymaps.vim_style]]
+keys = "g,q"
+action = "code_editor.format_buffer"
+key_display = "gq"
+
+# ------------------------------------------------------------------------------
+# History and Utilities
+# ------------------------------------------------------------------------------
+
+# Colon key (;) - Show query history (similar to : for commands in vim)
+[[keymaps.vim_style]]
+keys = "semicolon"
+action = "show_query_history"
+key_display = ";"
+
+# Ctrl+r - Refresh catalog (like :e! or refresh in vim)
+[[keymaps.vim_style]]
+keys = "ctrl+r"
+action = "refresh_catalog"
+key_display = "^r"
+
+# ------------------------------------------------------------------------------
+# UI Controls
+# ------------------------------------------------------------------------------
+
+# Ctrl+b - Toggle sidebar (like NERDTree toggle in vim)
+[[keymaps.vim_style]]
+keys = "ctrl+b"
+action = "toggle_sidebar"
+key_display = "^b"
+
+# z,z - Toggle full screen (like zz centers in vim, this maximizes)
+[[keymaps.vim_style]]
+keys = "z,z"
+action = "toggle_full_screen"
+key_display = "zz"
+
+# ------------------------------------------------------------------------------
+# Help and Export
+# ------------------------------------------------------------------------------
+
+# Question mark - Help (like :help in vim)
+[[keymaps.vim_style]]
+keys = "question_mark"
+action = "help"
+key_display = "?"
+
+# Ctrl+e - Export data
+[[keymaps.vim_style]]
+keys = "ctrl+e"
+action = "show_data_exporter"
+key_display = "^e"
+
+# ------------------------------------------------------------------------------
+# Quit
+# ------------------------------------------------------------------------------
+
+# Ctrl+q - Quit (like :q in vim)
+[[keymaps.vim_style]]
+keys = "ctrl+q"
+action = "quit"
+key_display = "^q"

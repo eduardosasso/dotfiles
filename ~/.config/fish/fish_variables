@@ -25,4 +25,4 @@ SETUVAR fish_color_status:red
 SETUVAR fish_color_user:brgreen
 SETUVAR fish_color_valid_path:\x2d\x2dunderline
 SETUVAR fish_key_bindings:fish_default_key_bindings
-SETUVAR fish_user_paths:/Users/eduardosasso/\x2elocal/bin\x1e/opt/homebrew/lib/ruby/gems/3\x2e4\x2e0/bin\x1e/opt/homebrew/opt/ruby/bin\x1e/opt/homebrew/opt/node\x4022/bin\x1e/opt/homebrew/bin\x1e/opt/homebrew/sbin
+SETUVAR fish_user_paths:/home/blakbelt78/\x2elocal/bin\x1e/Users/eduardosasso/\x2elocal/bin\x1e/opt/homebrew/lib/ruby/gems/3\x2e4\x2e0/bin\x1e/opt/homebrew/opt/ruby/bin\x1e/opt/homebrew/opt/node\x4022/bin\x1e/opt/homebrew/bin\x1e/opt/homebrew/sbin
