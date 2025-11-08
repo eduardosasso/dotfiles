@@ -27,7 +27,6 @@ map("n", "<leader>rr", ":qa<CR>", { desc = "Restart Neovim" })
 map("n", "Q", ":qa<CR>", { desc = "Quit all" })
 
 
-
 -- File explorer
 map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
 map("n", "<leader>ef", "<cmd>NvimTreeFindFile<CR>", { desc = "Find current file in explorer" })
@@ -74,7 +73,9 @@ map("n", "<leader>f", function() vim.lsp.buf.format({ async = true }) end, { des
 -- Telescope
 map("n", "<leader>ff", ":Telescope find_files<CR>", { desc = "Find files" })
 map("n", "<D-p>", ":Telescope find_files<CR>", { desc = "Find files (VS Code style)" })
+map("n", "<leader>p", ":Telescope find_files<CR>", { desc = "Find files (Space+p)" })
 map("n", "<leader>fg", ":Telescope live_grep<CR>", { desc = "Live grep" })
+map("n", "<leader>r", ":Telescope live_grep<CR>", { desc = "Live grep (Space+r)" })
 map("n", "<D-f>", ":Telescope live_grep<CR>", { desc = "Live grep (VS Code style)" })
 map("n", "<C-r>", ":Telescope live_grep<CR>", { desc = "Live grep (Ctrl+R)" })
 map("n", "<leader>fb", ":Telescope buffers<CR>", { desc = "Find buffers" })

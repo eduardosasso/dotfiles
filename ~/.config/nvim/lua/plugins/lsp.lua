@@ -47,51 +47,76 @@ return {
         },
       })
 
-      local lspconfig = require("lspconfig")
-      local util = require("lspconfig.util")
+      -- Setup capabilities
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-      local servers = {
-        lua_ls = {
-          settings = {
-            Lua = {
-              completion = { callSnippet = "Replace" },
-              telemetry = { enable = false },
-              diagnostics = { disable = { "trailing-space" } },
-            },
+      -- Configure LSP servers using the new vim.lsp.config API
+      vim.lsp.config('lua_ls', {
+        capabilities = capabilities,
+        settings = {
+          Lua = {
+            completion = { callSnippet = "Replace" },
+            telemetry = { enable = false },
+            diagnostics = { disable = { "trailing-space" } },
           },
         },
-        ts_ls = {},
-        pyright = {},
-        rust_analyzer = {},
-        gopls = {},
-        html = {},
-        cssls = {},
-        jsonls = {},
-        biome = {
-          cmd = { "biome", "lsp-proxy" },
-          filetypes = {
-            "javascript", "javascriptreact", "javascript.jsx",
-            "typescript", "typescriptreact", "typescript.tsx",
-            "json", "jsonc"
-          },
-          root_dir = util.root_pattern("biome.json", "biome.jsonc", "package.json", ".git"),
-        },
-        solargraph = {
-          settings = {
-            solargraph = {
-              diagnostics = true,
-              completion = true,
-            }
-          }
-        },
-      }
+      })
 
-      for server, config in pairs(servers) do
-        config.capabilities = capabilities
-        lspconfig[server].setup(config)
-      end
+      vim.lsp.config('ts_ls', {
+        capabilities = capabilities,
+      })
+
+      vim.lsp.config('pyright', {
+        capabilities = capabilities,
+      })
+
+      vim.lsp.config('rust_analyzer', {
+        capabilities = capabilities,
+      })
+
+      vim.lsp.config('gopls', {
+        capabilities = capabilities,
+      })
+
+      vim.lsp.config('html', {
+        capabilities = capabilities,
+      })
+
+      vim.lsp.config('cssls', {
+        capabilities = capabilities,
+      })
+
+      vim.lsp.config('jsonls', {
+        capabilities = capabilities,
+      })
+
+      vim.lsp.config('biome', {
+        capabilities = capabilities,
+        cmd = { "biome", "lsp-proxy" },
+        filetypes = {
+          "javascript", "javascriptreact", "javascript.jsx",
+          "typescript", "typescriptreact", "typescript.tsx",
+          "json", "jsonc"
+        },
+        root_markers = { "biome.json", "biome.jsonc", "package.json", ".git" },
+      })
+
+      vim.lsp.config('solargraph', {
+        capabilities = capabilities,
+        settings = {
+          solargraph = {
+            diagnostics = true,
+            completion = true,
+          }
+        }
+      })
+
+      -- Enable all configured LSP servers
+      vim.lsp.enable({
+        'lua_ls', 'ts_ls', 'pyright', 'rust_analyzer',
+        'gopls', 'html', 'cssls', 'jsonls', 'biome', 'solargraph'
+      })
     end,
   },
 }

@@ -1,6 +1,7 @@
 [user]
 	name = Eduardo Sasso
 	email = eduardo.sasso@gmail.com
+	signingkey = /Users/eduardosasso/.ssh/id_ed25519
 [core]
 	pager = delta
 [interactive]
@@ -23,3 +24,7 @@
 	zero-style = normal
 	line-numbers-zero-style = 
 	file-modified-label = 
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true

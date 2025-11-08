@@ -9,6 +9,10 @@ return {
 
     require("nvim-tree").setup({
       sort = { sorter = "case_sensitive" },
+      hijack_directories = {
+        enable = false,
+        auto_open = false,
+      },
       view = {
         width = 35,
         side = "left",
