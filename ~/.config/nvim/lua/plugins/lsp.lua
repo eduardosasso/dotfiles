@@ -28,7 +28,6 @@ return {
           "lua_ls", "ts_ls", "pyright", "rust_analyzer",
           "gopls", "html", "cssls", "jsonls", "solargraph", "biome",
         },
-        automatic_installation = true,
       })
     end,
   },
@@ -112,11 +111,6 @@ return {
         }
       })
 
-      -- Enable all configured LSP servers
-      vim.lsp.enable({
-        'lua_ls', 'ts_ls', 'pyright', 'rust_analyzer',
-        'gopls', 'html', 'cssls', 'jsonls', 'biome', 'solargraph'
-      })
     end,
   },
 }
