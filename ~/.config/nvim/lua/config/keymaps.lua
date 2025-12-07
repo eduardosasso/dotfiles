@@ -33,11 +33,14 @@ map("n", "<leader>ef", "<cmd>NvimTreeFindFile<CR>", { desc = "Find current file 
 map("n", "<D-e>", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer (Cmd+E)" })
 map("n", "<D-b>", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer (Cmd+B)" })
 
--- Tabs
-map("n", "<M-]>", "<cmd>tabnext<CR>", { desc = "Next tab (Alt+])" })
-map("n", "<M-[>", "<cmd>tabprevious<CR>", { desc = "Previous tab (Alt+[)" })
-map("n", "<D-w>", "<cmd>tabclose<CR>", { desc = "Close tab (Cmd+W)" })
-map("n", "<D-t>", "<cmd>tabnew<CR>", { desc = "New tab (Cmd+T)" })
+-- Buffers (using bufferline)
+map("n", "<M-]>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer (Alt+])" })
+map("n", "<M-[>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer (Alt+[)" })
+map("n", "<D-w>", "<cmd>bdelete<CR>", { desc = "Close buffer (Cmd+W)" })
+map("n", "<D-t>", "<cmd>enew<CR>", { desc = "New buffer (Cmd+T)" })
+map("n", "ZZ", "<cmd>bdelete<CR>", { desc = "Close buffer" })
+map("n", "<leader>x", "<cmd>bdelete<CR>", { desc = "Close buffer" })
+map("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "Close buffer" })
 
 -- Visual mode
 map("v", "<", "<gv")
