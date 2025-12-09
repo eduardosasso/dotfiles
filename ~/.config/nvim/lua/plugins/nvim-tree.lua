@@ -9,6 +9,10 @@ return {
 
     require("nvim-tree").setup({
       sort = { sorter = "case_sensitive" },
+      hijack_directories = {
+        enable = false,
+        auto_open = false,
+      },
       view = {
         width = 35,
         side = "left",
@@ -79,10 +83,6 @@ return {
       hijack_netrw = true,
       hijack_cursor = false,
       hijack_unnamed_buffer_when_opening = false,
-      hijack_directories = {
-        enable = false,  -- Don't automatically open when doing 'nvim .'
-        auto_open = false,
-      },
       sync_root_with_cwd = true,
       respect_buf_cwd = true,
       prefer_startup_root = false,

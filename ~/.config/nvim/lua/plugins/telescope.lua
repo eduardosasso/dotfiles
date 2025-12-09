@@ -43,16 +43,14 @@ return {
           i = {
             ["<C-c>"] = require("telescope.actions").close,
             ["<Esc>"] = require("telescope.actions").close,
-            ["<CR>"] = require("telescope.actions").select_tab,
+            ["<CR>"] = require("telescope.actions").select_default,
             ["<D-CR>"] = require("telescope.actions").select_vertical,
-            ["<S-CR>"] = require("telescope.actions").select_vertical,
           },
           n = {
             ["<C-c>"] = require("telescope.actions").close,
             ["<Esc>"] = require("telescope.actions").close,
-            ["<CR>"] = require("telescope.actions").select_tab,
+            ["<CR>"] = require("telescope.actions").select_default,
             ["<D-CR>"] = require("telescope.actions").select_vertical,
-            ["<S-CR>"] = require("telescope.actions").select_vertical,
           },
         },
       },

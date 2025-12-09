@@ -27,18 +27,20 @@ map("n", "<leader>rr", ":qa<CR>", { desc = "Restart Neovim" })
 map("n", "Q", ":qa<CR>", { desc = "Quit all" })
 
 
-
 -- File explorer
 map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
 map("n", "<leader>ef", "<cmd>NvimTreeFindFile<CR>", { desc = "Find current file in explorer" })
 map("n", "<D-e>", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer (Cmd+E)" })
 map("n", "<D-b>", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer (Cmd+B)" })
 
--- Tabs
-map("n", "<M-]>", "<cmd>tabnext<CR>", { desc = "Next tab (Alt+])" })
-map("n", "<M-[>", "<cmd>tabprevious<CR>", { desc = "Previous tab (Alt+[)" })
-map("n", "<D-w>", "<cmd>tabclose<CR>", { desc = "Close tab (Cmd+W)" })
-map("n", "<D-t>", "<cmd>tabnew<CR>", { desc = "New tab (Cmd+T)" })
+-- Buffers (using bufferline)
+map("n", "<M-]>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer (Alt+])" })
+map("n", "<M-[>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer (Alt+[)" })
+map("n", "<D-w>", "<cmd>bdelete<CR>", { desc = "Close buffer (Cmd+W)" })
+map("n", "<D-t>", "<cmd>enew<CR>", { desc = "New buffer (Cmd+T)" })
+map("n", "ZZ", "<cmd>bdelete<CR>", { desc = "Close buffer" })
+map("n", "<leader>x", "<cmd>bdelete<CR>", { desc = "Close buffer" })
+map("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "Close buffer" })
 
 -- Visual mode
 map("v", "<", "<gv")
@@ -73,17 +75,11 @@ map("n", "<leader>f", function() vim.lsp.buf.format({ async = true }) end, { des
 
 -- Telescope
 map("n", "<leader>ff", ":Telescope find_files<CR>", { desc = "Find files" })
-map("n", "<leader>p", ":Telescope find_files<CR>", { desc = "Find files (Space+P)" })
--- Cross-platform find files (Cmd+P on Mac only)
-if vim.fn.has("mac") == 1 then
-  map("n", "<D-p>", ":Telescope find_files<CR>", { desc = "Find files (Cmd+P)" })
-end
+map("n", "<D-p>", ":Telescope find_files<CR>", { desc = "Find files (VS Code style)" })
+map("n", "<leader>p", ":Telescope find_files<CR>", { desc = "Find files (Space+p)" })
 map("n", "<leader>fg", ":Telescope live_grep<CR>", { desc = "Live grep" })
-map("n", "<leader>r", ":Telescope live_grep<CR>", { desc = "Live grep (Space+R)" })
--- Cross-platform live grep (Cmd+F on Mac only)
-if vim.fn.has("mac") == 1 then
-  map("n", "<D-f>", ":Telescope live_grep<CR>", { desc = "Live grep (Cmd+F)" })
-end
+map("n", "<leader>r", ":Telescope live_grep<CR>", { desc = "Live grep (Space+r)" })
+map("n", "<D-f>", ":Telescope live_grep<CR>", { desc = "Live grep (VS Code style)" })
 map("n", "<C-r>", ":Telescope live_grep<CR>", { desc = "Live grep (Ctrl+R)" })
 map("n", "<leader>fb", ":Telescope buffers<CR>", { desc = "Find buffers" })
 map("n", "<leader>fh", ":Telescope help_tags<CR>", { desc = "Help tags" })

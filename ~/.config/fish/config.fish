@@ -28,6 +28,7 @@ set -Ux EZA_COLORS "reset:di=36:uu=0:un=0:gu=0:gn=0:xx=0:da=90:sn=90:ur=0:uw=0:u
 # fnm env --use-on-cd --shell fish | source
 fish_add_path /opt/homebrew/opt/node@22/bin
 fish_add_path $HOME/.local/bin
+fish_add_path $HOME/.local/share/gem/ruby/3.4.0/bin
 
 # [ -f /opt/homebrew/share/autojump/autojump.fish ]; and source /opt/homebrew/share/autojump/autojump.fish
 

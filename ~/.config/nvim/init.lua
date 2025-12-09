@@ -18,20 +18,10 @@ vim.opt.rtp:prepend(lazypath)
 require("config.options")    -- Basic Neovim settings
 require("config.keymaps")    -- Key mappings  
 require("config.autocmds")   -- Auto commands
-require("config.tabline")    -- Custom tabline
+-- tabline replaced by bufferline plugin
 
 -- Setup plugins
-require("lazy").setup("plugins", {
-  checker = {
-    enabled = true,        -- Enable update checker
-    notify = true,         -- Show notification when updates available
-    frequency = 3600,      -- Check every hour (3600 seconds)
-  },
-  change_detection = {
-    enabled = true,        -- Enable change detection
-    notify = true,         -- Show notification when config changes
-  },
-})
+require("lazy").setup("plugins")
 
 -- =============================================================================
 -- Configuration complete - Modern, modular, maintainable

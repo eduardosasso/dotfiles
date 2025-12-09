@@ -52,3 +52,24 @@ autocmd("TextYankPost", {
         vim.highlight.on_yank()
     end
 })
+
+-- Clean up empty/alpha buffers when opening a real file
+autocmd("BufEnter", {
+    callback = function()
+        local bufnr = vim.api.nvim_get_current_buf()
+        local bufname = vim.api.nvim_buf_get_name(bufnr)
+        -- If current buffer has a name (is a real file)
+        if bufname ~= "" and not bufname:match("NvimTree") then
+            -- Find and delete empty/alpha buffers
+            for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+                if buf ~= bufnr and vim.api.nvim_buf_is_valid(buf) then
+                    local name = vim.api.nvim_buf_get_name(buf)
+                    local ft = vim.bo[buf].filetype
+                    if name == "" or ft == "alpha" then
+                        vim.api.nvim_buf_delete(buf, { force = true })
+                    end
+                end
+            end
+        end
+    end
+})

@@ -43,14 +43,37 @@ return {
     dashboard.opts.opts.noautocmd = true
     alpha.setup(dashboard.opts)
 
-    -- Show Alpha when opening a directory
+    -- Disable alpha autocmds when leaving the dashboard to prevent invalid window errors
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "AlphaReady",
+      callback = function(opts)
+        vim.api.nvim_create_autocmd("BufLeave", {
+          buffer = opts.buf,
+          once = true,
+          callback = function()
+            -- Clear the WinResized autocmd group that alpha creates
+            pcall(vim.api.nvim_del_augroup_by_name, "alpha_resize")
+          end,
+        })
+      end,
+    })
+
+    -- Show Alpha when opening a directory and clean up directory buffer
     vim.api.nvim_create_autocmd("VimEnter", {
       callback = function()
-        local stats = vim.uv.fs_stat(vim.fn.argv(0))
+        local arg = vim.fn.argv(0)
+        if arg == "" then
+          require("alpha").start()
+          return
+        end
+        local stats = vim.uv.fs_stat(arg)
         if stats and stats.type == "directory" then
+          -- Delete the directory buffer
+          vim.cmd("bdelete")
           require("alpha").start()
         end
       end,
     })
+
   end,
 }

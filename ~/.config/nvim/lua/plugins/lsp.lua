@@ -28,7 +28,6 @@ return {
           "lua_ls", "ts_ls", "pyright", "rust_analyzer",
           "gopls", "html", "cssls", "jsonls", "solargraph", "biome",
         },
-        automatic_installation = true,
       })
     end,
   },
@@ -47,13 +46,12 @@ return {
         },
       })
 
+      -- Setup capabilities
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-      -- Modern vim.lsp.config approach (Neovim 0.11+)
-      vim.lsp.config.lua_ls = {
-        cmd = { vim.fn.exepath("lua-language-server") },
-        filetypes = { "lua" },
+      -- Configure LSP servers using the new vim.lsp.config API
+      vim.lsp.config('lua_ls', {
         capabilities = capabilities,
         settings = {
           Lua = {
@@ -62,70 +60,48 @@ return {
             diagnostics = { disable = { "trailing-space" } },
           },
         },
-      }
+      })
 
-      vim.lsp.config.ts_ls = {
-        cmd = { vim.fn.exepath("typescript-language-server"), "--stdio" },
-        filetypes = { "javascript", "typescript", "typescriptreact", "javascriptreact" },
+      vim.lsp.config('ts_ls', {
         capabilities = capabilities,
-      }
+      })
 
-      vim.lsp.config.pyright = {
-        cmd = { vim.fn.exepath("pyright-langserver"), "--stdio" },
-        filetypes = { "python" },
+      vim.lsp.config('pyright', {
         capabilities = capabilities,
-      }
+      })
 
-      vim.lsp.config.rust_analyzer = {
-        cmd = { vim.fn.exepath("rust-analyzer") },
-        filetypes = { "rust" },
+      vim.lsp.config('rust_analyzer', {
         capabilities = capabilities,
-      }
+      })
 
-      vim.lsp.config.gopls = {
-        cmd = { vim.fn.exepath("gopls") },
-        filetypes = { "go", "gomod", "gowork", "gotmpl" },
+      vim.lsp.config('gopls', {
         capabilities = capabilities,
-      }
+      })
 
-      vim.lsp.config.html = {
-        cmd = { vim.fn.exepath("vscode-html-language-server"), "--stdio" },
-        filetypes = { "html" },
+      vim.lsp.config('html', {
         capabilities = capabilities,
-      }
+      })
 
-      vim.lsp.config.cssls = {
-        cmd = { vim.fn.exepath("vscode-css-language-server"), "--stdio" },
-        filetypes = { "css", "scss", "less" },
+      vim.lsp.config('cssls', {
         capabilities = capabilities,
-      }
+      })
 
-      vim.lsp.config.jsonls = {
-        cmd = { vim.fn.exepath("vscode-json-language-server"), "--stdio" },
-        filetypes = { "json", "jsonc" },
+      vim.lsp.config('jsonls', {
         capabilities = capabilities,
-      }
+      })
 
-      vim.lsp.config.biome = {
-        cmd = { vim.fn.exepath("biome"), "lsp-proxy" },
+      vim.lsp.config('biome', {
+        capabilities = capabilities,
+        cmd = { "biome", "lsp-proxy" },
         filetypes = {
           "javascript", "javascriptreact", "javascript.jsx",
           "typescript", "typescriptreact", "typescript.tsx",
           "json", "jsonc"
         },
-        capabilities = capabilities,
-        root_dir = function(fname)
-          local path = type(fname) == "string" and fname or vim.api.nvim_buf_get_name(fname)
-          return vim.fs.find({"biome.json", "biome.jsonc", "package.json", ".git"}, {
-            path = path,
-            upward = true,
-          })[1]
-        end,
-      }
+        root_markers = { "biome.json", "biome.jsonc", "package.json", ".git" },
+      })
 
-      vim.lsp.config.solargraph = {
-        cmd = { vim.fn.exepath("solargraph"), "stdio" },
-        filetypes = { "ruby" },
+      vim.lsp.config('solargraph', {
         capabilities = capabilities,
         settings = {
           solargraph = {
@@ -133,19 +109,8 @@ return {
             completion = true,
           }
         }
-      }
+      })
 
-      -- Enable the language servers
-      vim.lsp.enable("lua_ls")
-      vim.lsp.enable("ts_ls")
-      vim.lsp.enable("pyright")
-      vim.lsp.enable("rust_analyzer")
-      vim.lsp.enable("gopls")
-      vim.lsp.enable("html")
-      vim.lsp.enable("cssls")
-      vim.lsp.enable("jsonls")
-      vim.lsp.enable("biome")
-      vim.lsp.enable("solargraph")
     end,
   },
 }
