@@ -1,0 +1,55 @@
+# Application bindings
+$terminal = uwsm app -- $TERMINAL
+$browser = omarchy-launch-browser
+
+bindd = SUPER, return, Terminal, exec, $terminal --working-directory="$(omarchy-cmd-terminal-cwd)"
+bindd = SUPER, F, File manager, exec, uwsm app -- nautilus --new-window
+bindd = SUPER, B, Browser, exec, $browser
+# bindd = SUPER SHIFT, B, Browser (private), exec, $browser --private
+# bindd = SUPER, M, Music, exec, omarchy-launch-or-focus spotify
+bindd = SUPER, N, Editor, exec, omarchy-launch-editor
+# bindd = SUPER, T, Activity, exec, $terminal -e btop
+bindd = SUPER, D, Docker, exec, $terminal -e lazydocker
+# bindd = SUPER, G, Signal, exec, omarchy-launch-or-focus signal "uwsm app -- signal-desktop"
+# bindd = SUPER, O, Obsidian, exec, omarchy-launch-or-focus obsidian "uwsm app -- obsidian -disable-gpu --enable-wayland-ime"
+# bindd = SUPER, slash, Passwords, exec, uwsm app -- 1password
+# bindd = SUPER, S, Clipboard, exec, alacritty --class clipse -e 'clipse'
+
+# If your web app url contains #, type it as ## to prevent hyperland treat it as comments
+# bindd = SUPER, A, ChatGPT, exec, omarchy-launch-webapp "https://chatgpt.com"
+# bindd = SUPER SHIFT, A, Grok, exec, omarchy-launch-webapp "https://grok.com"
+# bindd = SUPER, C, Calendar, exec, omarchy-launch-webapp "https://app.hey.com/calendar/weeks/"
+# bindd = SUPER, E, Email, exec, omarchy-launch-webapp "https://app.hey.com"
+# bindd = SUPER, Y, YouTube, exec, omarchy-launch-or-focus-webapp YouTube "https://youtube.com/"
+# bindd = SUPER SHIFT, G, WhatsApp, exec, omarchy-launch-or-focus-webapp WhatsApp "https://web.whatsapp.com/"
+# bindd = SUPER ALT, G, Google Messages, exec, omarchy-launch-or-focus-webapp "Google Messages" "https://messages.google.com/web/conversations"
+# bindd = SUPER, X, X, exec, omarchy-launch-webapp "https://x.com/"
+# bindd = SUPER SHIFT, X, X Post, exec, omarchy-launch-webapp "https://x.com/compose/post"
+
+
+# same mapping as mac
+bindd = ALT, X, Terminal, exec, $terminal --working-directory="$(omarchy-cmd-terminal-cwd)"
+bindd = ALT, B, Browser, exec, $browser
+bindd = ALT, W, Browser, exec, $browser
+bindd = ALT, S, Clipboard, exec, alacritty --class clipse -e 'clipse'
+bindd = ALT, I, ChatGPT, exec, omarchy-launch-webapp "https://chatgpt.com"
+# bindd = ALT, I, ChatGPT, exec, uwsm app -- zen https://chatgpt.com
+bindd = ALT, Y, Perplexity, exec, omarchy-launch-webapp "https://perplexity.com"
+# bindd = ALT, Y, Perplexity, exec, uwsm app -- zen https://perplexity.com
+bindd = ALT, slash, Passwords, exec, uwsm app -- 1password
+bindd = ALT, T, Activity, exec, $terminal -e btop
+bindd = ALT, F, File manager, exec, uwsm app -- nautilus --new-window
+bindd = ALT, D, Cursor, exec, uwsm app -- cursor
+bindd = ALT, P, Chrome, exec, uwsm app -- chromium
+# bindd = ALT, A, Mail, exec, uwsm app -- zen https://www.icloud.com/mail/
+bindd = ALT, A, Mail, exec, omarchy-launch-webapp https://www.icloud.com/mail/
+
+bind = SUPER, period, exec, bash /home/blakbelt78/.config/whisper-dictation/toggle-dictation.sh
+
+# bindr = , F12, exec, /home/blakbelt78/.config/nerd-dictation/end-dictation.sh
+# bind = , F12, exec, /home/blakbelt78/.config/nerd-dictation/start-dictation.sh
+
+# bindd = ALT, M, Mail, exec, omarchy-launch-webapp "https://www.icloud.com/mail/"
+# Overwrite existing bindings, like putting Omarchy Menu on Super + Space
+# unbind = SUPER, SPACE
+# bindd = SUPER, SPACE, Omarchy menu, exec, omarchy-menu
