@@ -60,6 +60,8 @@ Prefix: `Ctrl-a` (remapped from default `Ctrl-b`)
 | `C-a ?` | List all keybindings | Default |
 | `C-a :` | Command prompt | Default |
 | `C-a t` | Show clock | Default |
+| `Cmd-click` | Open link in browser | |
+| `Shift-Cmd-click` | Open link (bypass tmux) | Use in copy mode |
 
 ## Command Line
 
