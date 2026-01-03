@@ -43,6 +43,11 @@ Prefix: `Ctrl-a` (remapped from default `Ctrl-b`)
 |----------|--------|------|
 | `C-a [` | Enter copy mode | Default |
 | `q` | Exit copy mode | |
+| `j/k` | Move down/up | |
+| `d` | Half-page down | Custom |
+| `u` | Half-page up | Custom |
+| `/` | Search forward | |
+| `?` | Search backward | |
 | `v` | Start selection | Custom |
 | `y` | Copy selection (to system clipboard) | Custom |
 | `C-a ]` | Paste | Default |
