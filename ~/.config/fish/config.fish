@@ -129,3 +129,5 @@ function fish_prompt
 end
 
 zoxide init fish | source
+
+thefuck --alias | source
