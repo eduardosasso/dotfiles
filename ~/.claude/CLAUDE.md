@@ -12,13 +12,8 @@ Project-specific CLAUDE.md files may override these defaults.
 ## Preferred Stack (New Projects)
 
 - **Runtime**: Bun (use `bun` not `npm`/`yarn`)
-- **Framework**: Hono
-- **Database**: SQLite (`bun:sqlite`) or PostgreSQL with Drizzle ORM
 - **Linter/Formatter**: Biome
-- **Testing**: Bun's native test runner or Vitest
-- **CSS**: PicoCSS (minimal) or Tailwind
-- **Frontend**: HTMX + Alpine.js, or Preact if SPA needed
-- **Deployment**: Kamal + Docker
+- **Database**: SQLite (`bun:sqlite`)
 
 ## Commands
 
