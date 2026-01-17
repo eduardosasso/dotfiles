@@ -14,6 +14,7 @@ Project-specific CLAUDE.md files may override these defaults.
 - **Runtime**: Bun (use `bun` not `npm`/`yarn`)
 - **Linter/Formatter**: Biome
 - **Database**: SQLite (`bun:sqlite`)
+- **Testing**: Bun's native test runner or Vitest
 
 ## Commands
 
