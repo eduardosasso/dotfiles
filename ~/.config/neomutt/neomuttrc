@@ -1,0 +1,62 @@
+# NeoMutt configuration for iCloud
+
+# Account settings
+set realname = "Eduardo Sasso"
+set from = "eduardo.sasso@me.com"
+
+# IMAP settings
+set imap_user = "eduardo.sasso@me.com"
+set imap_pass = "equa-dtpj-jmfk-tlwj"
+set folder = "imaps://imap.mail.me.com:993"
+set spoolfile = "+INBOX"
+set postponed = "+Drafts"
+set trash = "+Deleted Messages"
+set record = "+Sent Messages"
+
+# SMTP settings
+set smtp_url = "smtp://eduardo.sasso@me.com@smtp.mail.me.com:587"
+set smtp_pass = "equa-dtpj-jmfk-tlwj"
+set ssl_starttls = yes
+set ssl_force_tls = yes
+
+# Cache for better performance
+set header_cache = "~/.cache/neomutt/headers"
+set message_cachedir = "~/.cache/neomutt/bodies"
+
+# Mailbox settings
+set mail_check = 60
+set timeout = 10
+
+# Sort by date, newest first
+set sort = reverse-date-received
+
+# Display settings
+set date_format = "%Y-%m-%d %H:%M"
+set index_format = "%4C %Z %D %-20.20L %s"
+set pager_index_lines = 10
+set pager_context = 3
+set pager_stop = yes
+
+# Sidebar (optional - comment out if you don't want it)
+set sidebar_visible = yes
+set sidebar_width = 30
+set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+set mail_check_stats
+
+# Key bindings for sidebar
+bind index,pager \Cp sidebar-prev
+bind index,pager \Cn sidebar-next
+bind index,pager \Co sidebar-open
+bind index,pager B sidebar-toggle-visible
+
+# Common mailboxes
+mailboxes =INBOX =Drafts ="Sent Messages" ="Deleted Messages" =Archive
+
+# Editor
+set editor = "nvim"
+
+# Don't ask to confirm append
+set confirmappend = no
+
+# Mark new unread messages as old when leaving mailbox
+set mark_old = no

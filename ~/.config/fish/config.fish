@@ -5,6 +5,11 @@ if status is-interactive
     
 end
 
+# Force truecolor for neomutt
+function neomutt
+    env COLORTERM=truecolor TERM=xterm-direct /usr/bin/neomutt $argv
+end
+
 alias l='eza --long --group-directories-first --colour-scale=all --hyperlink -a --color=always'
 alias ll='l'
 
